@@ -20,8 +20,17 @@ $('a.smooth-scroll')
     // Figure out element to scroll to
     var target = $(this.hash);
     target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-    // Does a scroll target exist?
+
+    // Adding Navbar to toggle back after click
     if (target.length) {
+      $('html').removeClass('nav-open');
+      nowuiKit.misc.navbar_menu_visible = 0;
+      $('#bodyClick').remove();
+      setTimeout(function() {
+        $toggle.removeClass('toggled');
+      }, 550);
+
+      // Does a scroll target exist?
       // Only prevent default if animation is actually gonna happen
       event.preventDefault();
       $('html, body').animate({
@@ -39,5 +48,18 @@ $('a.smooth-scroll')
         };
       });
     }
+  }
+});
+
+// On body click closing nav toggle
+$(document).click(function (event) {
+  var navClass = document.getElementsByClassName('toggled');
+  if (navClass.length > 0) {
+    $('html').removeClass('nav-open');
+    nowuiKit.misc.navbar_menu_visible = 0;
+    $('#bodyClick').remove();
+    setTimeout(function() {
+      $toggle.removeClass('toggled');
+    }, 550);
   }
 });
