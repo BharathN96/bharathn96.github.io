@@ -63,3 +63,9 @@ $(document).click(function (event) {
     }, 550);
   }
 });
+
+// Adding Scroll Top
+$('a.scroll-top').click(function() {
+  $('html, body').animate({scrollTop:0}, 'slow');
+  return false;
+});
