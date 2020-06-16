@@ -7278,3 +7278,7 @@ a.credit {
   padding-bottom: 0;
 }
 
+.tooltip-inner {
+  background-color: #088400 !important;
+  color: white;
+}
