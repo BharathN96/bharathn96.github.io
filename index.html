@@ -1,557 +1,909 @@
 <!DOCTYPE html>
-<html lang="en-US" xmlns="http://www.w3.org/1999/html">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bharath N</title>
-    <meta name="description" content=""/>
-    <link rel="shortcut icon" href="images/b_logo.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/aos.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="styles/main.css" rel="stylesheet">
-  </head>
-  <body id="top">
-    <header>
-      <div class="profile-page sidebar-collapse">
-        <nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-primary" color-on-scroll="400">
-          <div class="container">
-            <div class="navbar-translate"><a class="navbar-brand scroll-top" href="#" rel="tooltip">Bharath N</a>
-              <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-bar bar1"></span><span class="navbar-toggler-bar bar2"></span><span class="navbar-toggler-bar bar3"></span></button>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navigation">
-              <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link smooth-scroll" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link smooth-scroll" href="#skill">Skills</a></li>
-                <li class="nav-item"><a class="nav-link smooth-scroll" href="#experience">Experience</a></li>
-                <li class="nav-item"><a class="nav-link smooth-scroll" href="#education">Education</a></li>
-                <li class="nav-item"><a class="nav-link smooth-scroll" href="#awards">Awards</a></li>
-                <li class="nav-item"><a class="nav-link smooth-scroll" href="#contact">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bharath N — Senior Data Scientist</title>
+<meta name="description" content="Bharath N — Senior Data Scientist working on AI/ML, LLMs, Agentic AI and observability for large-scale payment systems." />
+<link rel="icon" href="images/b_logo.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --font: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --radius: 16px;
+    --ease: cubic-bezier(.2,.7,.2,1);
+  }
+  [data-theme="dark"] {
+    --bg: #070b14;
+    --bg-2: #0c1220;
+    --card: rgba(18, 26, 44, 0.72);
+    --card-solid: #121a2c;
+    --border: rgba(120, 160, 255, 0.14);
+    --text: #e6ecf7;
+    --muted: #8d9ab3;
+    --accent: #22d3ee;
+    --accent-2: #a78bfa;
+    --accent-3: #34d399;
+    --glow: rgba(34, 211, 238, 0.35);
+    --node: 34, 211, 238;
+    --nav-bg: rgba(7, 11, 20, 0.7);
+  }
+  [data-theme="light"] {
+    --bg: #f6f8fc;
+    --bg-2: #eef2fa;
+    --card: rgba(255, 255, 255, 0.82);
+    --card-solid: #ffffff;
+    --border: rgba(30, 60, 140, 0.12);
+    --text: #0f172a;
+    --muted: #55607a;
+    --accent: #0891b2;
+    --accent-2: #7c3aed;
+    --accent-3: #059669;
+    --glow: rgba(8, 145, 178, 0.22);
+    --node: 8, 145, 178;
+    --nav-bg: rgba(246, 248, 252, 0.78);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background .4s var(--ease), color .4s var(--ease);
+  }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  #net { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+  .grid-overlay {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse at 50% 0%, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black 20%, transparent 70%);
+    opacity: .5;
+  }
+  main, nav, footer { position: relative; z-index: 1; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px clamp(16px, 5vw, 64px);
+    background: var(--nav-bg);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo { font-family: var(--mono); font-weight: 500; font-size: 1.05rem; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 4px; list-style: none; }
+  .nav-links a {
+    font-size: .9rem; color: var(--muted); padding: 8px 12px; border-radius: 10px;
+    transition: color .2s, background .2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--card); }
+  .nav-links a.active { color: var(--accent); }
+  .nav-right { display: flex; align-items: center; gap: 8px; }
+  .icon-btn {
+    width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--border);
+    background: var(--card); color: var(--text); cursor: pointer;
+    display: grid; place-items: center; transition: transform .2s, border-color .2s;
+  }
+  .icon-btn:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .icon-btn svg { width: 18px; height: 18px; }
+  .menu-btn { display: none; }
+  [data-theme="dark"] .sun { display: block; } [data-theme="dark"] .moon { display: none; }
+  [data-theme="light"] .sun { display: none; } [data-theme="light"] .moon { display: block; }
+
+  /* ---------- LAYOUT ---------- */
+  section { padding: 110px clamp(16px, 6vw, 96px) 40px; max-width: 1240px; margin: 0 auto; }
+  .section-head { margin-bottom: 40px; }
+  .eyebrow {
+    font-family: var(--mono); font-size: .82rem; color: var(--accent);
+    letter-spacing: .04em; margin-bottom: 8px; display: inline-block;
+  }
+  h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.15; letter-spacing: -.02em; }
+  .grad {
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    transition: transform .3s var(--ease), border-color .3s, box-shadow .3s;
+  }
+  .card:hover { border-color: color-mix(in srgb, var(--accent) 45%, transparent); box-shadow: 0 10px 40px -12px var(--glow); }
+
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ---------- HERO ---------- */
+  #home { min-height: 100vh; display: flex; align-items: center; padding-top: 120px; }
+  .hero { display: grid; grid-template-columns: 1.25fr .9fr; gap: 48px; align-items: center; width: 100%; }
+  .status {
+    display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: .8rem;
+    padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border); background: var(--card);
+    color: var(--muted); margin-bottom: 22px;
+  }
+  .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-3); box-shadow: 0 0 0 0 var(--accent-3); animation: pulse 2s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-3) 70%, transparent); } 70% { box-shadow: 0 0 0 10px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+  h1 { font-size: clamp(2.6rem, 7vw, 4.8rem); line-height: 1.02; letter-spacing: -.035em; margin-bottom: 18px; }
+  .typed-line { font-family: var(--mono); font-size: clamp(1rem, 2.2vw, 1.25rem); color: var(--muted); min-height: 1.8em; margin-bottom: 20px; }
+  .typed-line .prompt { color: var(--accent-3); }
+  .typed { color: var(--text); }
+  .caret { display: inline-block; width: 9px; height: 1.1em; background: var(--accent); vertical-align: -3px; margin-left: 2px; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .hero p.lead { color: var(--muted); font-size: 1.08rem; max-width: 600px; margin-bottom: 30px; }
+  .hero p.lead strong { color: var(--text); font-weight: 600; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 30px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 12px;
+    font-weight: 600; font-size: .95rem; border: 1px solid var(--border); cursor: pointer;
+    transition: transform .2s, box-shadow .2s, border-color .2s; font-family: var(--font);
+  }
+  .btn svg { width: 18px; height: 18px; }
+  .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; border: none; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -8px var(--glow); }
+  .btn-ghost { background: var(--card); color: var(--text); }
+  .btn-ghost:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .socials { display: flex; gap: 10px; }
+
+  /* terminal card */
+  .terminal { padding: 0; overflow: hidden; font-family: var(--mono); font-size: .84rem; }
+  .term-bar { display: flex; align-items: center; gap: 7px; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  .dot { width: 11px; height: 11px; border-radius: 50%; }
+  .term-bar .t { margin-left: 10px; color: var(--muted); font-size: .76rem; }
+  .term-body { padding: 18px 20px 22px; line-height: 1.85; }
+  .k { color: var(--accent-2); } .s { color: var(--accent-3); } .n { color: #f59e0b; } .c { color: var(--muted); } .f { color: var(--accent); }
+
+  .scroll-cue { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); color: var(--muted); font-family: var(--mono); font-size: .72rem; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .mouse { width: 22px; height: 34px; border: 2px solid var(--muted); border-radius: 12px; position: relative; }
+  .mouse::after { content: ''; position: absolute; left: 50%; top: 6px; width: 3px; height: 7px; background: var(--accent); border-radius: 2px; transform: translateX(-50%); animation: wheel 1.6s infinite; }
+  @keyframes wheel { 0% { opacity: 1; top: 6px; } 100% { opacity: 0; top: 18px; } }
+
+  /* ---------- IMPACT ---------- */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+  .stat { padding: 24px; }
+  .stat .num { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -.03em; }
+  .stat .lbl { color: var(--muted); font-size: .9rem; }
+  .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .impact { padding: 24px; position: relative; overflow: hidden; }
+  .impact:hover { transform: translateY(-4px); }
+  .impact .ico { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 14px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); }
+  .impact .ico svg { width: 22px; height: 22px; }
+  .impact h3 { font-size: 1.08rem; margin-bottom: 6px; }
+  .impact p { color: var(--muted); font-size: .94rem; }
+  .delta { font-family: var(--mono); font-size: .78rem; display: inline-block; margin-top: 12px; padding: 4px 10px; border-radius: 8px; background: color-mix(in srgb, var(--accent-3) 14%, transparent); color: var(--accent-3); }
+
+  /* ---------- ABOUT ---------- */
+  .about { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; }
+  .about .card { padding: 28px; }
+  .about p { color: var(--muted); margin-bottom: 14px; }
+  .about p strong { color: var(--text); }
+  .facts { list-style: none; display: grid; gap: 14px; }
+  .facts li { display: flex; gap: 12px; align-items: flex-start; }
+  .facts .fi { flex: none; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: color-mix(in srgb, var(--accent-2) 16%, transparent); color: var(--accent-2); }
+  .facts .fi svg { width: 17px; height: 17px; }
+  .facts small { color: var(--muted); display: block; font-size: .8rem; }
+
+  /* ---------- SKILLS ---------- */
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .tab {
+    font-family: var(--mono); font-size: .82rem; padding: 8px 14px; border-radius: 10px;
+    border: 1px solid var(--border); background: var(--card); color: var(--muted); cursor: pointer; transition: all .2s;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: #fff; background: linear-gradient(135deg, var(--accent), var(--accent-2)); border-color: transparent; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+  .skill-card { padding: 22px; }
+  .skill-card h3 { font-size: 1rem; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .skill-card h3 .badge { font-family: var(--mono); font-size: .7rem; color: var(--accent); border: 1px solid var(--border); padding: 2px 8px; border-radius: 6px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-size: .84rem; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border);
+    background: var(--bg-2); transition: all .2s; cursor: default;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .skill-card.hide { display: none; }
+
+  /* ---------- EXPERIENCE ---------- */
+  .timeline { position: relative; padding-left: 30px; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--accent), var(--accent-2), transparent); }
+  .company { margin-bottom: 34px; position: relative; }
+  .company::before {
+    content: ''; position: absolute; left: -29px; top: 8px; width: 16px; height: 16px; border-radius: 50%;
+    background: var(--bg); border: 3px solid var(--accent); box-shadow: 0 0 16px var(--glow);
+  }
+  .company-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin-bottom: 14px; }
+  .company-head h3 { font-size: 1.35rem; }
+  .ext { display: inline-flex; align-items: center; gap: 6px; border-bottom: 1px dashed transparent; transition: color .2s, border-color .2s; }
+  .ext:hover { color: var(--accent); border-color: var(--accent); }
+  .ext svg { width: 14px; height: 14px; opacity: .7; }
+  .meta { font-family: var(--mono); font-size: .8rem; color: var(--muted); }
+  .role { padding: 0; margin-bottom: 12px; overflow: hidden; }
+  .role-toggle {
+    width: 100%; background: none; border: none; color: var(--text); cursor: pointer; font-family: var(--font);
+    display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 22px; text-align: left;
+  }
+  .role-toggle h4 { font-size: 1.02rem; }
+  .role-toggle .meta { white-space: nowrap; }
+  .chev { width: 18px; height: 18px; transition: transform .3s var(--ease); color: var(--muted); flex: none; }
+  .role.open .chev { transform: rotate(180deg); color: var(--accent); }
+  .role-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s var(--ease); }
+  .role.open .role-body { grid-template-rows: 1fr; }
+  .role-body > div { overflow: hidden; }
+  .role-body ul { list-style: none; padding: 0 22px 20px; display: grid; gap: 10px; }
+  .role-body li { color: var(--muted); font-size: .94rem; padding-left: 22px; position: relative; }
+  .role-body li::before { content: '▹'; position: absolute; left: 0; color: var(--accent); }
+  .role-body li strong { color: var(--text); font-weight: 600; }
+
+  /* ---------- PROJECTS ---------- */
+  .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .project { padding: 24px; display: flex; flex-direction: column; }
+  .project:hover { transform: translateY(-4px); }
+  .project .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .project .folder { color: var(--accent); width: 34px; height: 34px; }
+  .project h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .project p { color: var(--muted); font-size: .93rem; flex: 1; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 16px; font-family: var(--mono); font-size: .75rem; color: var(--accent-2); }
+  .award { border-color: color-mix(in srgb, #f59e0b 40%, transparent); }
+  .award .folder { color: #f59e0b; }
+
+  /* ---------- EDUCATION ---------- */
+  .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .edu { padding: 24px; }
+  .edu:hover { transform: translateY(-4px); }
+  .edu .yr { font-family: var(--mono); font-size: .78rem; color: var(--accent); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .edu .yr .live { font-size: .68rem; padding: 2px 8px; border-radius: 6px; background: color-mix(in srgb, var(--accent-3) 15%, transparent); color: var(--accent-3); }
+  .edu h3 { font-size: 1.08rem; margin-bottom: 8px; line-height: 1.35; }
+  .edu .school { font-size: .94rem; color: var(--muted); }
+
+  /* ---------- CONTACT ---------- */
+  .contact { display: grid; grid-template-columns: 1fr 1.15fr; gap: 24px; }
+  .contact .card { padding: 30px; }
+  .contact p { color: var(--muted); margin-bottom: 22px; }
+  .email-box {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+    padding: 14px 16px; border-radius: 12px; border: 1px dashed var(--border); background: var(--bg-2);
+    font-family: var(--mono); font-size: .92rem; margin-bottom: 18px;
+  }
+  .email-box a:hover { color: var(--accent); }
+  .copy-btn { font-family: var(--mono); font-size: .76rem; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); cursor: pointer; }
+  .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .contact-links { display: grid; gap: 10px; }
+  .contact-links a { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border); transition: all .2s; }
+  .contact-links a:hover { border-color: var(--accent); transform: translateX(4px); }
+  .contact-links svg { width: 20px; height: 20px; color: var(--accent); }
+  .contact-links small { color: var(--muted); display: block; font-size: .78rem; }
+  form { display: grid; gap: 14px; }
+  label { font-size: .84rem; color: var(--muted); display: grid; gap: 6px; font-family: var(--mono); }
+  input, textarea {
+    font-family: var(--font); font-size: .96rem; color: var(--text); background: var(--bg-2);
+    border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; outline: none; transition: border-color .2s, box-shadow .2s; resize: vertical;
+  }
+  input:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 15%, transparent); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-note { font-size: .82rem; color: var(--muted); min-height: 1.3em; }
+  .form-note a { color: var(--accent); text-decoration: underline; }
+
+  footer { text-align: center; padding: 40px 16px 50px; color: var(--muted); font-size: .85rem; font-family: var(--mono); }
+  footer span { color: var(--accent); }
+
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translate(-50%, 120px); z-index: 100;
+    background: var(--card-solid); border: 1px solid var(--accent); color: var(--text); padding: 10px 18px; border-radius: 12px;
+    font-family: var(--mono); font-size: .84rem; transition: transform .35s var(--ease); box-shadow: 0 10px 30px -10px var(--glow);
+  }
+  .toast.show { transform: translate(-50%, 0); }
+
+  .progress { position: fixed; top: 0; left: 0; height: 3px; z-index: 60; background: linear-gradient(90deg, var(--accent), var(--accent-2)); width: 0; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 960px) {
+    .hero, .about, .contact { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .terminal { display: none; }
+  }
+  @media (max-width: 820px) {
+    .menu-btn { display: grid; }
+    .nav-links {
+      position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; padding: 12px 16px 18px;
+      background: var(--nav-bg); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border); display: none;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { display: block; }
+  }
+  @media (max-width: 560px) {
+    .form-row { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .role-toggle { flex-wrap: wrap; }
+    .scroll-cue { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<canvas id="net"></canvas>
+<div class="grid-overlay"></div>
+
+<!-- ================= NAV ================= -->
+<nav>
+  <a href="#home" class="logo">&lt;bharath<span>.n</span> /&gt;</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="icon-btn" id="themeToggle" aria-label="Toggle dark / light theme" title="Toggle theme">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main>
+<!-- ================= HERO ================= -->
+<section id="home">
+  <div class="hero">
+    <div>
+      <div class="status reveal"><span class="pulse"></span> Bengaluru, India · Open to conversations</div>
+      <h1 class="reveal">Hi, I'm <span class="grad">Bharath N</span></h1>
+      <div class="typed-line reveal"><span class="prompt">&gt;</span> <span class="typed" id="typed"></span><span class="caret"></span></div>
+      <p class="lead reveal">
+        Senior Data Scientist with <strong>6+ years in IT</strong> and <strong>4.5+ years in data science, ML and GenAI</strong>
+        for large-scale payment systems. I build observability platforms, automated root-cause analysis and
+        Agentic AI workflows that turn noisy telemetry into fast, confident decisions.
+      </p>
+      <div class="cta reveal">
+        <a href="#contact" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+          Contact me
+        </a>
+        <a href="#experience" class="btn btn-ghost">View experience</a>
       </div>
-    </header>
-    <div class="page-content">
-      <div>
-        <div class="profile-page">
-          <div class="wrapper">
-            <div class="page-header page-header-small" filter-color="green">
-              <div class="page-header-image" data-parallax="true" style="background-image: url('images/cover-pic.jpg');"></div>
-              <div class="container">
-                <div class="content-center">
-                  <div class="cc-profile-image"><a href="#"><img src="images/profile-pic.jpeg" alt="Image"/></a></div>
-                  <div class="h2 title">Bharath Narasimhan</div>
-                  <p class="category text-white">Student | Data Science in progress | Magento 2 Developer</p>
-                  <p class="category text-white">Bengaluru, Karnataka, India</p>
-                </div>
-              </div>
-              <div class="section">
-                <div class="container">
-                  <div class="button-container">
-                    <a class="btn btn-default btn-round btn-lg btn-icon" href="https://www.linkedin.com/in/bharath-n-8876a7142" rel="tooltip" title="Find me on Linkedin">
-                      <i class="fa fa-linkedin"></i>
-                    </a>
-                    <a class="btn btn-default btn-round btn-lg btn-icon" href="https://www.facebook.com/i.am.bharath.n" rel="tooltip" title="Follow me on Facebook">
-                      <i class="fa fa-facebook"></i>
-                    </a>
-                    <a class="btn btn-default btn-round btn-lg btn-icon" href="https://www.instagram.com/i_am_bharath_n?r=nametag" rel="tooltip" title="Follow me on Instagram">
-                      <i class="fa fa-instagram"></i>
-                    </a>
-                    <a class="btn btn-default btn-round btn-lg btn-icon" href="https://twitter.com/iambharathn" rel="tooltip" title="Follow me on Twitter">
-                      <i class="fa fa-twitter"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="section" id="about">
-          <div class="container">
-            <div class="card" data-aos="fade-up" data-aos-offset="10">
-              <div class="row">
-                <div class="col-lg-6 col-md-12">
-                  <div class="card-body">
-                    <div class="h4 mt-0 title">About</div>
-                    <p>Hello! I am Bharath Narasimhan. Computer Science Engineer. Pursuing my M.Tech in Data Science at <a href="https://www.pes.edu/mtechdsml/">PES University</a></p>
-                    <p>A tech geek who loves to code, learn new technologies related to software development. Worked as a Magento 2 developer at <a href="https://www.codilar.com/">Codilar Technologies</a>, Bengaluru.</p>
-                    <p>A Social Media Geek with some hobbies of Movies, Photography, Games</p>
-                  </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                  <div class="card-body">
-                    <div class="h4 mt-0 title">Basic Information</div>
-                    <div class="row">
-                      <div class="col-sm-4"><strong class="text-uppercase">Date of Birth:</strong></div>
-                      <div class="col-sm-8">07-05-1996</div>
-                    </div>
-                    <div class="row mt-3">
-                      <div class="col-sm-4"><strong class="text-uppercase">Email:</strong></div>
-                      <div class="col-sm-8">nbharath96@gmail.com</div>
-                    </div>
-                    <div class="row mt-3">
-                      <div class="col-sm-4"><strong class="text-uppercase">Phone:</strong></div>
-                      <div class="col-sm-8">+91 8050252587</div>
-                    </div>
-                    <div class="row mt-3">
-                      <div class="col-sm-4"><strong class="text-uppercase">Address:</strong></div>
-                      <div class="col-sm-8">#745 'Akshaya', 5th main, Ragavendra Block, Srinagar, Bengaluru - 560050</div>
-                    </div>
-                    <div class="row mt-3">
-                      <div class="col-sm-4"><strong class="text-uppercase">Language:</strong></div>
-                      <div class="col-sm-8">Kannada, English, Hindi</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="section" id="skill">
-          <div class="container">
-            <div class="h4 text-center mb-4 title">Skills</div>
-            <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-              <div class="card-body">
-                <h3 style="text-align: center">Operating System</h3>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="progress-container progress-primary"><span class="progress-badge">Windows 8/10</span>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="progress-container progress-primary"><span class="progress-badge">Linux</span>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-              <div class="card-body">
-                <h3 style="text-align: center">Programing Languages & Frameworks</h3>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="progress-container progress-primary"><span class="progress-badge">PHP</span>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="progress-container progress-primary"><span class="progress-badge">JAVA</span>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">70%</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="progress-container progress-primary"><span class="progress-badge">JavaScript</span>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 65%;"></div><span class="progress-value">65%</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="progress-container progress-primary"><span class="progress-badge">PYTHON</span>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">60%</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="progress-container progress-primary"><span class="progress-badge">CSS</span>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 55%;"></div><span class="progress-value">55%</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="progress-container progress-primary"><span class="progress-badge">XML</span>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div><span class="progress-value">50%</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="progress-container progress-primary"><span class="progress-badge">Magento 2</span>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="progress-container progress-primary"><span class="progress-badge">R</span>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div><span class="progress-value">50%</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-              <div class="card-body">
-                <h3 style="text-align: center">Tools</h3>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="progress-container progress-primary"><span class="progress-badge">Microsoft Office</span>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="progress-container progress-primary"><span class="progress-badge">Eclipse</span>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div><span class="progress-value">85%</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="progress-container progress-primary"><span class="progress-badge">Php Storm</span>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div><span class="progress-value">90%</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="progress-container progress-primary"><span class="progress-badge">Netbeans</span>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">70%</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="progress-container progress-primary"><span class="progress-badge">git</span>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div><span class="progress-value">90%</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="progress-container progress-primary"><span class="progress-badge">R Studio</span>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="section" id="experience">
-          <div class="container cc-experience">
-            <div class="h4 text-center mb-4 title">Work Experience</div>
-            <div class="card">
-              <div class="row">
-                <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                  <div class="card-body cc-experience-header">
-                    <p>March 2018 - June 2020</p>
-                    <div class="h5"><a href="https://www.codilar.com/" style="color: white">Codilar Technologies</a></div>
-                  </div>
-                </div>
-                <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                  <div class="card-body">
-                    <div class="h5">Magento 2 Developer</div>
-                    <p><a href="https://magento.com/">Magento 2</a> is a framework which helps in the complete development of E-commerce websites.</p>
-                    <p>Worked on many Magento 2 projects development, some of the projects are <a href="https://eat.mv/">EAT</a>, <a href="https://www.campussutra.com/">Campus Sutra</a>, <a href="https://shopcrocs.in/">Cros India</a>. Magento 2 PWA project <a href="https://www.samyakk.com/">Samyakk</a></p>
-                    <p>Deployed to Client <a href="https://www.alshaya.com/en/">M.H. Alshaya Co</a> from August 2019 - June 2020 as  Magento 2 resource for the development of there Magento 2 websites</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="section" id="education">
-          <div class="container cc-education">
-            <div class="h4 text-center mb-4 title">Education</div>
-            <div class="card">
-              <div class="row">
-                <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                  <div class="card-body cc-education-header">
-                    <p>2020 - Present</p>
-                    <div class="h5">Master's Degree</div>
-                  </div>
-                </div>
-                <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                  <div class="card-body">
-                    <div class="h5">Masters in Data Science and Machine Learning</div>
-                    <p class="category"><a href="https://www.pes.edu/mtechdsml/">PES University</a></p>
-                    <p>Data Science in Progress....</p>
-                    <ul>
-                      <li>Data Science is a blend of various tools, algorithms, and machine learning principles with the goal to discover hidden patterns from the raw data</li>
-                      <li>Data Science is primarily used to make decisions and predictions making use of predictive causal analytics, prescriptive analytics (predictive plus decision science) and machine learning.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="row">
-                <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                  <div class="card-body cc-education-header">
-                    <p>2014 - 2018</p>
-                    <div class="h5">Bachelor's Degree</div>
-                  </div>
-                </div>
-                <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                  <div class="card-body">
-                    <div class="h5">Bachelor of Technology - Computer Science</div>
-                    <p class="category"><a href="https://www.jainuniversity.ac.in/">Jain University</a></p>
-                    <p>Aggregate: 81%</p>
-                    <ul>
-                      <li>Received <a class="smooth-scroll" href="#awards">Best Project Award</a> for Final Year Project - Automated Modular Data Analysis and Visualization System with Predictive Analytics Using Machine Learning for Agriculture field</li>
-                      <li>Active Member of the Department forum I-Gyan</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="row">
-                <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                  <div class="card-body cc-education-header">
-                    <p>2012 - 2014</p>
-                    <div class="h5">Pre-University</div>
-                  </div>
-                </div>
-                <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                  <div class="card-body">
-                    <div class="h5">PCMCs</div>
-                    <p class="category"><a href="https://www.deekshalearning.com/campus/kmwa-pu-college">Deeksha - KMWA PU College</a></p>
-                    <p>Aggregate: 78%</p>
-                    <ul>
-                      <li>Participated actively in college level Science fair I-Cube</li>
-                      <li>Participated college level Chess Championship</li>
-                    </ul>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="row">
-                <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                  <div class="card-body cc-education-header">
-                    <p>2001 - 2012</p>
-                    <div class="h5">School</div>
-                  </div>
-                </div>
-                <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                  <div class="card-body">
-                    <div class="h5">SSLC - Karnataka State Board</div>
-                    <p class="category"><a href="https://indianhighschool.edu.in/index">Indian High School</a></p>
-                    <p>Aggregate: 87%</p>
-                    <ul>
-                      <li>Learnt Sanskrit in High School</li>
-                      <li>Active Participation in Sports and Cultural Activities</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="section" id="awards">
-          <div class="container cc-reference">
-            <div class="h4 mb-4 text-center title">Awards/Activities</div>
-            <div class="card" data-aos="zoom-in">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="row">
-                    <div class="col-lg-2 col-md-3 cc-reference-header">
-                      <img src="images/achievement_ribbon.png" alt="Image"/>
-                      <div class="h5 pt-2"> </div>
-                      <p class="category"> </p>
-                    </div>
-                    <div class="col-lg-10 col-md-9">
-                      <h5>Best Project Award</h5>
-                      <p>Received Best Project Award for my final year project <a href="http://researchplusjournals.com/index.php/IJRS/article/view/466/820">"Automated Modular Data Analysis and Visualization System with Predictive Analytics Using Machine Learning for Agriculture field"</a> in B.Tech</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card" data-aos="zoom-in">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="row">
-                    <div class="col-lg-2 col-md-3 cc-reference-header">
-                      <img src="images/certificate.png" alt="Image"/>
-                      <div class="h5 pt-2"> </div>
-                      <p class="category"> </p>
-                    </div>
-                    <div class="col-lg-10 col-md-9">
-                      <h5>Paper Publication</h5>
-                      <p>Presented a paper on <a href="https://www.ijariit.com/manuscript/dynamic-path-optimization-of-traffic-signal-system-for-ambulance-dispatch-in-emergency-medical-response-using-analytical-hierarchy-process/">“Dynamic path optimization of traffic signal system for ambulance
-                        dispatch in emergency medical response using analytical hierarchy process”</a> in IJARIIT in the
-                        year 2018.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card" data-aos="zoom-in">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="row">
-                    <div class="col-lg-2 col-md-3 cc-reference-header">
-                      <img src="images/mini-project.png" alt="Image"/>
-                      <div class="h5 pt-2"> </div>
-                      <p class="category"> </p>
-                    </div>
-                    <div class="col-lg-10 col-md-9">
-                      <h5>Mini Projects</h5>
-                      <ul>
-                        <li>Distance Vector Routing protocol which consisted of use of network simulator-2
-                          for the analysis of Data in network.</li>
-                        <li>Railway database which consisted of database for backend and
-                          front end GUI design was developed using Java.</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card" data-aos="zoom-in">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="row">
-                    <div class="col-lg-2 col-md-3 cc-reference-header">
-                      <img src="images/certifications.png" alt="Image"/>
-                      <div class="h5 pt-2"> </div>
-                      <p class="category"> </p>
-                    </div>
-                    <div class="col-lg-10 col-md-9">
-                      <h5>Certifications</h5>
-                      <ul>
-                        <li>Programing in java as part of oracle workforce development program at NIIT, Rajajinagar in the
-                          year 2016.</li>
-                        <li>Introduction to Data Analysis using R at Big Data University training course in the year 2016.</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="section" id="contact">
-          <div class="cc-contact-information" style="background-image: url('images/maps.PNG');">
-            <div class="container">
-              <div class="cc-contact">
-                <div class="row">
-                  <div class="col-md-9">
-                    <div class="card mb-0" data-aos="zoom-in">
-                      <div class="h4 text-center title">Contact Me</div>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="card-body">
-                            <form action="https://formspree.io/nbharath96@gmail.com" method="POST">
-                              <div class="p pb-3"><strong>Feel free to contact me <i class="fa fa-exclamation-triangle" aria-hidden="true" data-toggle="tooltip" rel="tooltip" title="For faster reply use Email/WhatsApp"></i></strong></div>
-                              <div class="row mb-3">
-                                <div class="col">
-                                  <div class="input-group"><span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
-                                    <input class="form-control" type="text" name="name" placeholder="Name" required="required"/>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="row mb-3">
-                                <div class="col">
-                                  <div class="input-group"><span class="input-group-addon"><i class="fa fa-file-text"></i></span>
-                                    <input class="form-control" type="text" name="Subject" placeholder="Subject" required="required"/>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="row mb-3">
-                                <div class="col">
-                                  <div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                    <input class="form-control" type="email" name="_replyto" placeholder="E-mail" required="required"/>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="row mb-3">
-                                <div class="col">
-                                  <div class="form-group">
-                                    <textarea class="form-control" name="message" placeholder="Your Message" required="required"></textarea>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col">
-                                  <button class="btn btn-primary" type="submit">Send</button>
-                                </div>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="card-body">
-                            <p class="mb-0"><strong>Address <i class="fa fa-map-marker" aria-hidden="true"></i></strong></p>
-                            <p class="pb-2"><a href="https://goo.gl/maps/uP9HsNJEKm7fu5RH8"> #745 'Akshaya', 5th main, Ragavendra Block, Srinagar, Bengaluru - 560050</a></p>
-                            <p class="mb-0"><strong>Phone/WhatsApp <i class="fa fa-whatsapp" aria-hidden="true"></i></strong></p>
-                            <p class="pb-2"><a href="https://api.whatsapp.com/send?phone=918050252587&text=Hi, I contacted you through your website.">+91 8050252587</a></p>
-                            <p class="mb-0"><strong>Email <i class="fa fa-envelope" aria-hidden="true"></i></strong></p>
-                            <p><a href="mailto:nbharath96@gmail.com">nbharath96@gmail.com</a></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="socials reveal">
+        <a class="icon-btn" href="https://www.linkedin.com/in/iambharathn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+        </a>
+        <a class="icon-btn github-link" href="https://github.com/BharathN96" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
+        </a>
+        <a class="icon-btn" href="mailto:nbharath96@gmail.com" aria-label="Email" title="nbharath96@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+        </a>
+        <a class="icon-btn" href="https://pypi.org/project/silhouetteplot/" target="_blank" rel="noopener noreferrer" aria-label="PyPI package" title="silhouetteplot on PyPI">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></svg>
+        </a>
       </div>
     </div>
-    <footer class="footer">
-      <div class="container text-center">
-        <a class="cc-facebook btn btn-link" href="https://www.facebook.com/i.am.bharath.n">
-          <i class="fa fa-facebook fa-2x " aria-hidden="true"></i>
+
+    <div class="card terminal reveal">
+      <div class="term-bar">
+        <span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span>
+        <span class="t">profile.py</span>
+      </div>
+      <div class="term-body">
+        <div><span class="k">class</span> <span class="f">DataScientist</span>:</div>
+        <div>&nbsp;&nbsp;name = <span class="s">"Bharath N"</span></div>
+        <div>&nbsp;&nbsp;role = <span class="s">"Senior Data Scientist"</span></div>
+        <div>&nbsp;&nbsp;company = <span class="s">"VuNet Systems"</span></div>
+        <div>&nbsp;&nbsp;experience_yrs = <span class="n">6</span> <span class="c"># 4.5+ in DS/ML</span></div>
+        <div>&nbsp;&nbsp;focus = [<span class="s">"LLMs"</span>, <span class="s">"Agentic AI"</span>,</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="s">"Observability"</span>, <span class="s">"RCA"</span>]</div>
+        <div>&nbsp;&nbsp;stack = {<span class="s">"py"</span>, <span class="s">"go"</span>, <span class="s">"clickhouse"</span>, <span class="s">"otel"</span>}</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;&nbsp;<span class="k">def</span> <span class="f">impact</span>(self):</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">return</span> {<span class="s">"MTTR"</span>: <span class="s">"-25%"</span>,</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="s">"onboarding"</span>: <span class="s">"5d → 1d"</span>}</div>
+      </div>
+    </div>
+  </div>
+  <a href="#impact" class="scroll-cue"><div class="mouse"></div>scroll</a>
+</section>
+
+<!-- ================= IMPACT ================= -->
+<section id="impact">
+  <div class="section-head reveal">
+    <span class="eyebrow">01 // business_impact</span>
+    <h2>Models are only as good as <span class="grad">the outcomes they move</span></h2>
+  </div>
+  <div class="stats">
+    <div class="card stat reveal"><div class="num grad"><span class="count" data-to="80">0</span>%</div><div class="lbl">Faster journey onboarding</div></div>
+    <div class="card stat reveal"><div class="num grad"><span class="count" data-to="25">0</span>%</div><div class="lbl">Improvement in MTTR</div></div>
+    <div class="card stat reveal"><div class="num grad">~<span class="count" data-to="65">0</span>%</div><div class="lbl">Less debugging time per incident</div></div>
+    <div class="card stat reveal"><div class="num grad"><span class="count" data-to="6">0</span>+ yrs</div><div class="lbl">Building in IT &amp; data</div></div>
+  </div>
+  <div class="impact-grid">
+    <div class="card impact reveal">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <h3>Accelerated Application Onboarding</h3>
+      <p>Cut application and payment-journey onboarding from 5 days to 1 day using Journey Workbench (JWB).</p>
+      <span class="delta">5 days → 1 day</span>
+    </div>
+    <div class="card impact reveal">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M8.5 7.5 11 16M15.5 7.5 13 16"/></svg></div>
+      <h3>Intelligent Alert Prioritization</h3>
+      <p>Topology-based Alert Correlation Engine that pinpoints the root alert behind cascading incidents, plus an alert analysis dashboard for recurring patterns.</p>
+      <span class="delta">MTTR −25%</span>
+    </div>
+    <div class="card impact reveal">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+      <h3>Faster Incident Resolution</h3>
+      <p>Interactive trace-visualization engine with code-level visibility for distributed services.</p>
+      <span class="delta">~10 min → 3–4 min</span>
+    </div>
+    <div class="card impact reveal">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></div>
+      <h3>Accelerated AI Development</h3>
+      <p>Agentic AI workflows reduced typical AI-assisted development turnaround, including testing and documentation.</p>
+      <span class="delta">3 days → 2 days</span>
+    </div>
+    <div class="card impact reveal">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/></svg></div>
+      <h3>Enterprise Customer Enablement</h3>
+      <p>Built Grafana dashboards for the first ML pilot, contributing to the company's first enterprise customer for its ML platform.</p>
+      <span class="delta">1st enterprise ML customer</span>
+    </div>
+    <div class="card impact reveal">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></div>
+      <h3>Storyboards &amp; Human-Readable ML Insights</h3>
+      <p>Expert in building storyboards, insights and human-readable ML outcomes that turn complex model output into clear narratives for faster understanding and decisions.</p>
+      <span class="delta">Complex ML → clear decisions</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="section-head reveal">
+    <span class="eyebrow">02 // about_me</span>
+    <h2>From e-commerce engineering to <span class="grad">applied AI</span></h2>
+  </div>
+  <div class="about">
+    <div class="card reveal">
+      <p>I'm a <strong>Senior Data Scientist at VuNet Systems</strong>, where I lead ML initiatives across the company and mentor junior engineers. My work sits at the intersection of <strong>machine learning, GenAI and observability</strong> for large-scale payment systems.</p>
+      <p>I built an end-to-end <strong>journey observability platform</strong> and an <strong>automated Root Cause Analysis engine</strong> on OpenTelemetry traces, and I work with our AI research team to reduce LLM hallucinations while optimizing large-scale ClickHouse queries for near real-time analytics.</p>
+      <p>Before data science, I spent two years as a software developer building high-performance Magento 2 e-commerce platforms — which is why I care as much about shipping reliable systems as I do about model accuracy.</p>
+    </div>
+    <div class="card reveal">
+      <ul class="facts">
+        <li><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg></span><div><strong>Operational Excellence Award</strong><small>For AI initiatives at VuNet Systems · Q1 FY 2026–27</small></div></li>
+        <li><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></span><div><strong>Storyboards &amp; ML storytelling</strong><small>Expert in building storyboards, insights and human-readable ML outcomes for faster understanding</small></div></li>
+        <li><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><div><strong>M.Tech, Data Science &amp; ML</strong><small>PES University, Bengaluru</small></div></li>
+        <li><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><div><strong>Executive Program, Forward Deployed AI PM</strong><small>IIT Madras · in progress</small></div></li>
+        <li><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m7.5 4.27 9 5.15M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span><div><strong>Open-source author</strong><small>silhouetteplot · Python package on PyPI</small></div></li>
+        <li><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div><strong>Mentor &amp; trainer</strong><small>Observability training for new hires, knowledge-sharing sessions</small></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+  <div class="section-head reveal">
+    <span class="eyebrow">03 // tech_stack</span>
+    <h2>Tools I reach for <span class="grad">every day</span></h2>
+  </div>
+  <div class="tabs reveal" id="skillTabs">
+    <button class="tab active" data-filter="all">all</button>
+    <button class="tab" data-filter="ai">ai_ml</button>
+    <button class="tab" data-filter="obs">observability</button>
+    <button class="tab" data-filter="eng">engineering</button>
+    <button class="tab" data-filter="data">data_viz</button>
+  </div>
+  <div class="skills-grid" id="skillsGrid">
+    <div class="card skill-card reveal" data-cat="ai">
+      <h3>AI / ML <span class="badge">core</span></h3>
+      <div class="chips"><span class="chip">LLMs</span><span class="chip">Agentic AI</span><span class="chip">RAG</span><span class="chip">Prompt Engineering</span><span class="chip">Time-Series Forecasting</span><span class="chip">Anomaly Detection</span><span class="chip">Feature Engineering</span><span class="chip">Deep Learning</span><span class="chip">scikit-learn</span><span class="chip">PyTorch</span><span class="chip">Statistical Modeling</span></div>
+    </div>
+    <div class="card skill-card reveal" data-cat="obs">
+      <h3>Observability <span class="badge">domain</span></h3>
+      <div class="chips"><span class="chip">OpenTelemetry</span><span class="chip">Distributed Tracing</span><span class="chip">Logs &amp; Metrics</span><span class="chip">Root Cause Analysis</span><span class="chip">Alert Correlation</span><span class="chip">Golden Signals</span></div>
+    </div>
+    <div class="card skill-card reveal" data-cat="eng">
+      <h3>Languages</h3>
+      <div class="chips"><span class="chip">Python</span><span class="chip">Go</span><span class="chip">SQL</span><span class="chip">Java</span><span class="chip">JavaScript</span><span class="chip">Bash</span></div>
+    </div>
+    <div class="card skill-card reveal" data-cat="data">
+      <h3>Databases</h3>
+      <div class="chips"><span class="chip">ClickHouse</span><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">MongoDB</span></div>
+    </div>
+    <div class="card skill-card reveal" data-cat="eng">
+      <h3>Cloud &amp; DevOps</h3>
+      <div class="chips"><span class="chip">AWS</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Linux</span><span class="chip">REST APIs</span><span class="chip">Git</span></div>
+    </div>
+    <div class="card skill-card reveal" data-cat="data">
+      <h3>Visualization</h3>
+      <div class="chips"><span class="chip">Grafana</span><span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Dashboard Development</span><span class="chip">Storyboarding</span><span class="chip">Human-Readable ML Insights</span></div>
+    </div>
+    <div class="card skill-card reveal" data-cat="obs">
+      <h3>Domain Expertise</h3>
+      <div class="chips"><span class="chip">Payment Systems</span><span class="chip">Transactions</span><span class="chip">Infra &amp; Network Observability</span><span class="chip">APM</span><span class="chip">RCA</span><span class="chip">E-commerce Platforms</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+  <div class="section-head reveal">
+    <span class="eyebrow">04 // experience</span>
+    <h2>Where I've <span class="grad">shipped</span></h2>
+  </div>
+  <div class="timeline">
+    <div class="company reveal">
+      <div class="company-head">
+        <h3><a class="ext" href="https://www.vunetsystems.com/" target="_blank" rel="noopener noreferrer">VuNet Systems
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a></h3>
+        <span class="meta">Bengaluru · May 2022 – Present</span>
+      </div>
+      <div class="card role open">
+        <button class="role-toggle"><h4>Senior Data Scientist</h4><span style="display:flex;gap:12px;align-items:center"><span class="meta">Apr 2024 – Present</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
+        <div class="role-body"><div><ul>
+          <li><strong>Leading ML initiatives across the company</strong>, mentoring junior engineers, collaborating with the AI research team to reduce LLM hallucinations, and optimizing large-scale ClickHouse queries for near real-time analytics.</li>
+          <li><strong>Architected the Journey Workbench</strong>, an end-to-end payment journey observability platform correlating logs, traces and metadata across distributed services for transaction-level visibility.</li>
+          <li><strong>Built an automated Root Cause Analysis engine</strong> on OpenTelemetry traces to find latency/error bottlenecks, with upstream and downstream dependency analysis and AI-generated incident summaries.</li>
+          <li><strong>Designed an optimized trace-visualization engine</strong> rendering traces as an interactive hierarchical tree with code-level visibility — debugging time down from ~10 min to 3–4 min per incident.</li>
+          <li><strong>Led executive-level observability dashboards</strong> consolidating application, infrastructure and journey health for engineering leadership and business stakeholders.</li>
+          <li><strong>Engineered the backend for a topology-based Alert Correlation Engine</strong> that groups related alerts into compound incidents, reducing operational effort.</li>
+        </ul></div></div>
+      </div>
+      <div class="card role">
+        <button class="role-toggle"><h4>Data Science Engineer</h4><span style="display:flex;gap:12px;align-items:center"><span class="meta">Aug 2022 – Mar 2024</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
+        <div class="role-body"><div><ul>
+          <li><strong>Designed the Alert Analysis Dashboard</strong> to analyze active and resolved alerts and spot recurring patterns, improving MTTR by 25%.</li>
+          <li><strong>Built Grafana dashboards for the company's first ML pilot</strong>, contributing directly to the first enterprise customer for the ML platform.</li>
+          <li><strong>Developed AI-driven insights</strong> that turn complex infrastructure and observability metrics into human-readable recommendations.</li>
+          <li><strong>Researched large-scale UPI payment transaction data</strong> and built a Transaction-Level Monitoring Dashboard.</li>
+        </ul></div></div>
+      </div>
+      <div class="card role">
+        <button class="role-toggle"><h4>Data Science Intern</h4><span style="display:flex;gap:12px;align-items:center"><span class="meta">May 2022 – Aug 2022</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
+        <div class="role-body"><div><ul>
+          <li><strong>Validated custom ML time-series forecasting models</strong> for golden-signal metrics, evaluating accuracy and designing interactive visualizations.</li>
+          <li><strong>Analyzed the in-house application health scoring algorithm</strong>, identifying improvements and documenting model performance.</li>
+        </ul></div></div>
+      </div>
+    </div>
+
+    <div class="company reveal">
+      <div class="company-head">
+        <h3><a class="ext" href="https://www.codilar.com/" target="_blank" rel="noopener noreferrer">Codilar Technologies
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a></h3>
+        <span class="meta">Bengaluru · Apr 2018 – Jun 2020</span>
+      </div>
+      <div class="card role">
+        <button class="role-toggle"><h4>Software Developer</h4><span style="display:flex;gap:12px;align-items:center"><span class="meta">Apr 2019 – Jun 2020</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
+        <div class="role-body"><div><ul>
+          <li><strong>Built a high-performance Product API</strong> that cut product data load time to under 0.3 s on Magento 2 platforms.</li>
+          <li><strong>Designed custom Magento 2 modules, extensions and themes</strong> plus third-party integrations.</li>
+          <li><strong>Built admin dashboards and reporting modules</strong>, including customer/product segmentation grids and analytics pages.</li>
+          <li><strong>Deployed Magento 2 APIs for a React-based PWA</strong> and managed cloud deployments, including a full Alshaya India upgrade from Magento 2.1 to 2.4.</li>
+        </ul></div></div>
+      </div>
+      <div class="card role">
+        <button class="role-toggle"><h4>Associate Software Developer</h4><span style="display:flex;gap:12px;align-items:center"><span class="meta">Apr 2018 – Mar 2019</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
+        <div class="role-body"><div><ul>
+          <li><strong>Developed and customized Magento 2 applications</strong> using PHP, HTML, CSS and MySQL.</li>
+          <li><strong>Integrated third-party services and extensions</strong> and troubleshot framework issues to improve stability.</li>
+        </ul></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+  <div class="section-head reveal">
+    <span class="eyebrow">05 // projects_and_achievements</span>
+    <h2>Things I've <span class="grad">built &amp; earned</span></h2>
+  </div>
+  <div class="projects">
+    <div class="card project award reveal">
+      <div class="top"><svg class="folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg></div>
+      <h3>Operational Excellence Award</h3>
+      <p>Recognized for outstanding contributions to AI initiatives at VuNet Systems, Q1 FY 2026–27.</p>
+      <div class="tags"><span>Award</span><span>AI Initiatives</span></div>
+    </div>
+    <a class="card project reveal" href="https://pypi.org/project/silhouetteplot/" target="_blank" rel="noopener noreferrer">
+      <div class="top"><svg class="folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></svg>
+        <svg style="width:18px;height:18px;color:var(--muted)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></div>
+      <h3>silhouetteplot (open source)</h3>
+      <p>A Python package on PyPI for silhouette plot visualization and cluster analysis.</p>
+      <div class="tags"><span>Python</span><span>PyPI</span><span>Clustering</span></div>
+    </a>
+    <div class="card project reveal">
+      <div class="top"><svg class="folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div>
+      <h3>AI Resume Screening System</h3>
+      <p>NLP-based resume analysis using Named Entity Recognition and ML classification to match resumes against job requirements.</p>
+      <div class="tags"><span>NLTK</span><span>spaCy</span><span>TensorFlow/Keras</span></div>
+    </div>
+    <div class="card project reveal">
+      <div class="top"><svg class="folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M18 11V6a2 2 0 0 0-4 0v5M14 10V4a2 2 0 0 0-4 0v2M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
+      <h3>Sign Language Translation</h3>
+      <p>Deep-learning computer-vision model translating real-time hand movements into English letters with transfer learning.</p>
+      <div class="tags"><span>VGG16</span><span>OpenCV</span><span>Transfer Learning</span></div>
+    </div>
+    <div class="card project reveal">
+      <div class="top"><svg class="folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20 16.2A4.5 4.5 0 0 0 17.5 8h-1.8A7 7 0 1 0 4 14.9M16 14v6M8 14v6M12 16v6"/></svg></div>
+      <h3>Rainfall Prediction &amp; Crop Recommendation</h3>
+      <p>Regression model for rainfall prediction and crop recommendations — Best Project recognition, 2017–2018.</p>
+      <div class="tags"><span>Regression</span><span>Predictive Analytics</span></div>
+    </div>
+    <div class="card project reveal">
+      <div class="top"><svg class="folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <h3>Mentoring &amp; Knowledge Sharing</h3>
+      <p>Observability platform training for new hires, Magento 2 API tutorials, engineer mentoring and knowledge-sharing sessions.</p>
+      <div class="tags"><span>Leadership</span><span>Training</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section id="education">
+  <div class="section-head reveal">
+    <span class="eyebrow">06 // education</span>
+    <h2>Always <span class="grad">learning</span></h2>
+  </div>
+  <div class="edu-grid">
+    <div class="card edu reveal">
+      <div class="yr">Oct 2026 – Present <span class="live">in progress</span></div>
+      <h3>Executive Program in Forward Deployed AI Product Management</h3>
+      <a class="ext school" href="https://www.iitm.ac.in/" target="_blank" rel="noopener noreferrer">IIT Madras
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+    </div>
+    <div class="card edu reveal">
+      <div class="yr">Jul 2020 – Jun 2022</div>
+      <h3>Master of Technology, Data Science &amp; Machine Learning</h3>
+      <a class="ext school" href="https://pes.edu/" target="_blank" rel="noopener noreferrer">PES University, Bengaluru
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+    </div>
+    <div class="card edu reveal">
+      <div class="yr">Aug 2014 – Jun 2018</div>
+      <h3>Bachelor of Technology, Computer Science</h3>
+      <a class="ext school" href="https://www.jainuniversity.ac.in/" target="_blank" rel="noopener noreferrer">Jain University, Bengaluru
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="section-head reveal">
+    <span class="eyebrow">07 // contact</span>
+    <h2>Let's build something <span class="grad">intelligent</span></h2>
+  </div>
+  <div class="contact">
+    <div class="card reveal">
+      <p>Whether it's an ML role, an observability problem, or a GenAI idea you want to talk through — my inbox is open.</p>
+      <div class="email-box">
+        <a href="mailto:nbharath96@gmail.com" id="emailLink">nbharath96@gmail.com</a>
+        <button class="copy-btn" id="copyEmail">copy</button>
+      </div>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/iambharathn" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          <div><strong>LinkedIn</strong><small>linkedin.com/in/iambharathn</small></div>
         </a>
-        <a class="cc-instagram btn btn-link" href="https://www.instagram.com/i_am_bharath_n?r=nametag">
-          <i class="fa fa-instagram fa-2x " aria-hidden="true"></i>
+        <a class="github-link" href="https://github.com/BharathN96" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
+          <div><strong>GitHub</strong><small class="github-text">github.com/BharathN96</small></div>
         </a>
-        <a class="cc-linkedin btn btn-link" href="https://www.linkedin.com/in/bharath-n-8876a7142">
-          <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i>
-        </a>
-        <a class="cc-twitter btn btn-link " href="https://twitter.com/iambharathn">
-          <i class="fa fa-twitter fa-2x " aria-hidden="true"></i>
-        </a>
-        <a class="cc-github btn btn-link" href="https://github.com/BharathN96">
-          <i class="fa fa-github fa-2x " aria-hidden="true"></i>
+        <a href="https://pypi.org/project/silhouetteplot/" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></svg>
+          <div><strong>PyPI</strong><small>pypi.org/project/silhouetteplot</small></div>
         </a>
       </div>
-      <div class="h4 title text-center">Bharath Narasimhan</div>
-      <div class="text-center text-muted">
-        <p>&copy; All rights reserved.</p>
-      </div>
-    </footer>
-    <script src="js/core/jquery.3.2.1.min.js"></script>
-    <script src="js/core/popper.min.js"></script>
-    <script src="js/core/bootstrap.min.js"></script>
-    <script src="js/now-ui-kit.js?v=1.1.0"></script>
-    <script src="js/aos.js"></script>
-    <script src="scripts/main.js"></script>
-  </body>
+    </div>
+    <div class="card reveal">
+      <form id="contactForm" novalidate>
+        <div class="form-row">
+          <label>name<input type="text" id="fName" placeholder="Your name" required /></label>
+          <label>email<input type="email" id="fEmail" placeholder="you@company.com" required /></label>
+        </div>
+        <label>subject<input type="text" id="fSubject" placeholder="Let's talk about…" /></label>
+        <label>message<textarea id="fMsg" rows="6" placeholder="Hi Bharath, …" required></textarea></label>
+        <button type="submit" class="btn btn-primary" style="justify-content:center">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
+          Send via email
+        </button>
+        <div class="form-note" id="formNote">This opens your email app with the message ready to send.</div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  Designed &amp; built by <span>Bharath N</span> · © <span id="year"></span>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ======== CONFIG — set your GitHub username here ======== */
+const GITHUB_USERNAME = 'BharathN96';
+const EMAIL = 'nbharath96@gmail.com';
+
+document.querySelectorAll('.github-link').forEach(a => a.href = 'https://github.com/' + GITHUB_USERNAME);
+document.querySelectorAll('.github-text').forEach(s => s.textContent = 'github.com/' + GITHUB_USERNAME);
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ======== THEME ======== */
+const root = document.documentElement;
+function getStored() { try { return localStorage.getItem('bn-theme'); } catch (e) { return null; } }
+function setStored(v) { try { localStorage.setItem('bn-theme', v); } catch (e) {} }
+const initial = getStored() || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+root.setAttribute('data-theme', initial);
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  setStored(next);
+});
+
+/* ======== MOBILE MENU ======== */
+const navLinks = document.getElementById('navLinks');
+document.getElementById('menuBtn').addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+/* ======== TYPING EFFECT ======== */
+const phrases = [
+  'Senior Data Scientist',
+  'LLMs & Agentic AI',
+  'Observability · OpenTelemetry',
+  'Root Cause Analysis engines',
+  'Payment systems at scale'
+];
+const typedEl = document.getElementById('typed');
+let pi = 0, ci = 0, deleting = false;
+function type() {
+  const word = phrases[pi];
+  typedEl.textContent = word.slice(0, ci);
+  if (!deleting && ci < word.length) { ci++; setTimeout(type, 65); }
+  else if (!deleting && ci === word.length) { deleting = true; setTimeout(type, 1600); }
+  else if (deleting && ci > 0) { ci--; setTimeout(type, 32); }
+  else { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(type, 300); }
+}
+type();
+
+/* ======== REVEAL + COUNTERS ======== */
+function animateCount(el) {
+  const to = +el.dataset.to, dur = 1400, start = performance.now();
+  function step(now) {
+    const p = Math.min((now - start) / dur, 1);
+    el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('visible');
+    e.target.querySelectorAll('.count').forEach(c => { if (!c.dataset.done) { c.dataset.done = 1; animateCount(c); } });
+    io.unobserve(e.target);
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 70 + 'ms';
+  io.observe(el);
+});
+
+/* ======== ACTIVE NAV + PROGRESS ======== */
+const sections = [...document.querySelectorAll('main section')];
+const links = [...navLinks.querySelectorAll('a')];
+const progress = document.getElementById('progress');
+function onScroll() {
+  const y = window.scrollY + 140;
+  let current = '';
+  sections.forEach(s => { if (y >= s.offsetTop) current = s.id; });
+  links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ======== SKILL FILTER ======== */
+document.getElementById('skillTabs').addEventListener('click', e => {
+  const btn = e.target.closest('.tab'); if (!btn) return;
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t === btn));
+  const f = btn.dataset.filter;
+  document.querySelectorAll('.skill-card').forEach(c => c.classList.toggle('hide', f !== 'all' && c.dataset.cat !== f));
+});
+
+/* ======== EXPERIENCE ACCORDION ======== */
+document.querySelectorAll('.role-toggle').forEach(b => b.addEventListener('click', () => b.parentElement.classList.toggle('open')));
+
+/* ======== TOAST / COPY ======== */
+const toast = document.getElementById('toast');
+function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(showToast.t); showToast.t = setTimeout(() => toast.classList.remove('show'), 2200); }
+document.getElementById('copyEmail').addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText(EMAIL); showToast('✓ Email copied to clipboard'); }
+  catch (e) { showToast(EMAIL); }
+});
+
+/* ======== CONTACT FORM (mailto) ======== */
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('fName').value.trim();
+  const from = document.getElementById('fEmail').value.trim();
+  const subject = document.getElementById('fSubject').value.trim() || ('Hello from ' + (name || 'your portfolio'));
+  const msg = document.getElementById('fMsg').value.trim();
+  const note = document.getElementById('formNote');
+  if (!name || !from || !msg) { note.textContent = 'Please fill in your name, email and message.'; note.style.color = '#f87171'; return; }
+  if (!/^\S+@\S+\.\S+$/.test(from)) { note.textContent = 'That email address doesn’t look right.'; note.style.color = '#f87171'; return; }
+  const body = msg + '\n\n— ' + name + ' (' + from + ')';
+  const href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  note.style.color = '';
+  note.innerHTML = 'Opening your email app… If nothing happens, <a href="' + href + '">click here</a> or write to ' + EMAIL + '.';
+  window.location.href = href;
+});
+
+/* ======== NEURAL NETWORK BACKGROUND ======== */
+(function () {
+  const canvas = document.getElementById('net');
+  const ctx = canvas.getContext('2d');
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let w, h, nodes = [], mouse = { x: -999, y: -999 };
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = canvas.width = innerWidth * dpr; h = canvas.height = innerHeight * dpr;
+    canvas.style.width = innerWidth + 'px'; canvas.style.height = innerHeight + 'px';
+    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.scale(dpr, dpr);
+    const count = Math.min(90, Math.floor(innerWidth * innerHeight / 16000));
+    nodes = Array.from({ length: count }, () => ({
+      x: Math.random() * innerWidth, y: Math.random() * innerHeight,
+      vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35, r: Math.random() * 1.8 + .8
+    }));
+  }
+  function draw() {
+    const rgb = getComputedStyle(root).getPropertyValue('--node').trim();
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    for (let i = 0; i < nodes.length; i++) {
+      const a = nodes[i];
+      if (!reduce) { a.x += a.vx; a.y += a.vy; }
+      if (a.x < 0 || a.x > innerWidth) a.vx *= -1;
+      if (a.y < 0 || a.y > innerHeight) a.vy *= -1;
+      const md = Math.hypot(a.x - mouse.x, a.y - mouse.y);
+      if (md < 140) { a.x += (a.x - mouse.x) * .01; a.y += (a.y - mouse.y) * .01; }
+      for (let j = i + 1; j < nodes.length; j++) {
+        const b = nodes[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+        if (d < 130) {
+          ctx.strokeStyle = 'rgba(' + rgb + ',' + (1 - d / 130) * .22 + ')';
+          ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+      ctx.fillStyle = 'rgba(' + rgb + ',.65)';
+      ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2); ctx.fill();
+    }
+    if (!reduce) requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', () => { resize(); if (reduce) draw(); });
+  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener('mouseleave', () => { mouse.x = mouse.y = -999; });
+  document.getElementById('themeToggle').addEventListener('click', () => { if (reduce) draw(); });
+  resize(); draw();
+})();
+</script>
+</body>
 </html>
